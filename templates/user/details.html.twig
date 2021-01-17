@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} Profil
+{% endblock %}
+
+{% block body %}
+
+    <section class="row">
+        <div class="col-9">
+            <h2>{{ user.firstname }} {{ user.lastname }}</h2>
+            <small>Inscrit le : {{ user.createdAt | date('d/m/Y') }}</small>
+            <br>
+        </div>
+    </section>
+    <br>
+
+    <section>
+
+        <h1>Activités :</h1>
+        {% for activity in activities %}
+            <!-- Blog Post -->
+            <div class="card mb-4">
+                <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+                <div class="card-body">
+                    <h2 class="card-title">{{ activity.name }}</h2>
+                    <p class="card-text">coucou</p>
+                    <a href="{{ path('activity_details', {id: activity.id}) }}" class="btn btn-primary">Voir plus &rarr;</a>
+                </div>
+                <div class="card-footer text-muted">
+                    {{ activity.didAt|date("d/m/Y") }}
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+    
+{% endblock %}
+
