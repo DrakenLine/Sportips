@@ -34,6 +34,7 @@
                 {% if app.user%}
                     {{ menu_link('profile', 'Profil') }}
                     {{ menu_link('app_logout', 'Déconnexion') }}
+                    {{ menu_link('activity_add', 'Ajouter une activité') }}
                 {% else %}
                     {{ menu_link('login', 'Connexion') }}
                 {% endif %}

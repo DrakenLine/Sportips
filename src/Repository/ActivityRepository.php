@@ -53,9 +53,9 @@ class ActivityRepository extends ServiceEntityRepository
     }
 
     public function getTypeOfActivity(Activity $activity){
-        return $this->createQueryBuilder('t')
-            ->leftJoin('t.name', 'a')
-            ->andWhere('a.activity = :activity')
+        return $this->createQueryBuilder('a')
+            ->leftJoin('a.typeOf', 'a')
+            ->andWhere('a.name = :type')
             ->setParameter('type', $activity)
             ->getQuery()
             ->getResult();

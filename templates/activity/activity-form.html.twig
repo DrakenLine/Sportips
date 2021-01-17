@@ -1,0 +1,33 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/select2.min.css') }}">
+{% endblock %}
+
+{% block title %}{{ parent() }}
+    {% if activity.id %}
+        <h1>Modifier l'activite {{ activity.name }}</h1>
+    {% else %}
+        <h1>Ajouter une activité</h1>
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+
+    <h2>
+        {% if activity.id %}
+            <h1>Modifier l'activite {{ activity.name }}</h1>
+        {% else %}
+            <h1>Ajouter une activité</h1>
+        {% endif %}
+    </h2>
+
+    {{ form(activity_form) }}
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/select2.min.js') }}"></script>
+    <script src="{{ asset('bundles/tetranzselect2entity/js/select2entity.js') }}"></script>
+{% endblock %}
+

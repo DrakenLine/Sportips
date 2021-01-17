@@ -8,12 +8,11 @@
         <div class="card">
             <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
             <div class="card-header">
-                <h1>{{ activity.user.firstname }} {{ activity.user.lastname }} - <small>{{ activity.name }}</small></h1>
+                <h1><a href="{{ path('user_details', {id: activity.user.id}) }}">{{ activity.user.firstname }} {{ activity.user.lastname }}</a> - <small>{{ activity.name }}</small></h1>
             </div>
             <div class="card-body">
                 <h5 class="card-title">Type of activity</h5>
                 <small>{{ activity.didAt|date("d/m/Y") }}</small>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                 <div class="d-flex justify-content-start">
                 {% if activity.km %}
                     <p class="p-2"><b>Distance : {{ activity.km }} Km</b></p>

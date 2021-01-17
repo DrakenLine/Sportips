@@ -16,8 +16,10 @@
     <br>
 
     <section>
-
         <h1>Activités :</h1>
+        {% if user == app.user %}
+            <a href="{{ path('activity_add') }}" class="btn btn-info">Ajouter un jeu</a>
+        {% endif %}
         {% for activity in activities %}
             <!-- Blog Post -->
             <div class="card mb-4">
@@ -27,6 +29,9 @@
                     <p class="card-text">coucou</p>
                     <a href="{{ path('activity_details', {id: activity.id}) }}" class="btn btn-primary">Voir plus &rarr;</a>
                 </div>
+                {% if user == app.user %}
+                    <a href="{{ path('activity_edit', {id: activity.id }) }}" class="btn btn-info">Modifier l'activité</a>
+                {% endif %}
                 <div class="card-footer text-muted">
                     {{ activity.didAt|date("d/m/Y") }}
                 </div>

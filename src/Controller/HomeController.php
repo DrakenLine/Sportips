@@ -18,18 +18,17 @@ class HomeController extends AbstractController
      * @Route("/home/activity/{id<\d+>}", name="activity_homepage")
      * @Route("/page/{page}", name="home_paginated")
      */
-    public function index(ActivityRepository $activityRepository, User $user = null, PaginatorInterface $paginator, $page = 1, Activity $activity): Response
+    public function index(ActivityRepository $activityRepository, User $user = null, PaginatorInterface $paginator, $page = 1): Response
     {
         $user = $this->getUser();
         $activities = $activityRepository->getLatestPaginatedActivities($paginator, $page);
         $activities->setUsedRoute('home_paginated');
-        $type = $activityRepository->getTypeOfActivity($activity);
+        //$type = $activityRepository->getTypeOfActivity($activity);
 
         return $this->render('home/home.html.twig', [
             'lastActivity' => $activityRepository->getLastActivity($user),
             'user' => $user,
             'activities' => $activities,
-            'type' => $type
         ]);
     }
 }

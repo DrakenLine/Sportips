@@ -13,8 +13,8 @@
     <div class="card mb-4">
         <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
         <div class="card-body">
-            <h2 class="card-title"> {{activity.name }} - <small>{{ user.firstname }} {{ user.lastname }}</small></h2>
-            <p class="card-text">{{ type.name }}</p>
+            <h2 class="card-title"> {{activity.name }} - <small><a href="{{ path('user_details', {id: activity.user.id}) }}">{{ activity.user.firstname }} {{ activity.user.lastname }}</a></small></h2>
+            <p class="card-text">Type of activity</p>
             <a href="{{ path('activity_details', {id: activity.id}) }}" class="btn btn-primary">Voir plus &rarr;</a>
         </div>
         <div class="card-footer text-muted">
@@ -55,9 +55,9 @@
                     <p>Pensez à vous inscrire !</p>
                     <a class="btn btn-info" href="">Inscription</a>
                 {% endif %}
-
             </div>
         </div>
+        <a class="btn btn-info m-2" href="{{ path('profile')}}">Mon profil</a>
     </div>
 
 </div>
